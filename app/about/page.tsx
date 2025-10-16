@@ -1,169 +1,72 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import { useState } from "react";
 import Link from "next/link";
 
 export default function AboutPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#eaecf0] animate-in fade-in slide-in-from-top duration-500">
-        <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-          >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 relative">
-              <img
-                src="/images/logo.png"
-                alt="Logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[#042944] font-bold text-lg sm:text-xl leading-none">
-                SAMOA
-              </span>
-              <span className="text-[#042944] font-bold text-lg sm:text-xl leading-none">
-                CREATIVE
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            <Link
-              href="/"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className="text-[#042944] font-medium border-b-2 border-[#042944]"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/services"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
-              Services
-            </Link>
-            <Link
-              href="/contact"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
-              Contact Us
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <Button className="hidden sm:block bg-[#042944] hover:bg-[#101828] text-white px-4 sm:px-6 py-3 rounded-md text-xs sm:text-sm transition-all hover:scale-105">
-              LET'S WORK
-              <br />
-              TOGETHER
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {mobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-[#eaecf0] bg-white animate-in slide-in-from-top duration-300">
-            <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <Link
-                href="/"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
-                Home
-              </Link>
-              <Link href="/about" className="text-[#042944] font-medium py-2">
-                About Us
-              </Link>
-              <Link
-                href="/services"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
-                Services
-              </Link>
-              <Link
-                href="/contact"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
-                Contact Us
-              </Link>
-            </nav>
-          </div>
-        )}
-      </header>
-
       {/* Hero Section */}
-      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 bg-[#042944]">
-        <div className="absolute inset-0 opacity-10">
+      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 bg-[#042944] overflow-hidden">
+        {/* Pattern Layer 1 */}
+        <div className="absolute inset-0 opacity-10 animate-slowMove">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
-                id="heroPattern"
+                id="aboutPattern1"
                 x="0"
                 y="0"
-                width="100"
-                height="100"
+                width="120"
+                height="120"
                 patternUnits="userSpaceOnUse"
               >
                 <circle
-                  cx="50"
-                  cy="50"
-                  r="40"
+                  cx="60"
+                  cy="60"
+                  r="50"
                   fill="none"
                   stroke="white"
-                  strokeWidth="1"
+                  strokeWidth="0.8"
                 />
                 <path
-                  d="M50 10 L50 90 M10 50 L90 50"
+                  d="M60 10 L60 110 M10 60 L110 60"
                   stroke="white"
-                  strokeWidth="1"
+                  strokeWidth="0.8"
                 />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#heroPattern)" />
+            <rect width="100%" height="100%" fill="url(#aboutPattern1)" />
           </svg>
         </div>
 
+        {/* Pattern Layer 2 */}
+        <div className="absolute inset-0 opacity-5 animate-slowMoveReverse">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="aboutPattern2"
+                x="0"
+                y="0"
+                width="160"
+                height="160"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M0 80 Q40 40 80 80 T160 80 M80 0 Q120 40 80 80 T80 160"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="0.6"
+                />
+                <circle cx="80" cy="80" r="15" fill="white" opacity="0.15" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#aboutPattern2)" />
+          </svg>
+        </div>
+
+        {/* Content */}
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center animate-in fade-in slide-in-from-top duration-700">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 text-balance">
@@ -171,407 +74,369 @@ export default function AboutPage() {
             </h1>
             <p className="text-[#d0d5dd] text-lg sm:text-xl max-w-2xl mx-auto">
               Learn more about our story, mission, and the team behind Samoa
-              Creative Co
+              Creative Co.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-12 sm:py-16 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern
-                id="pattern"
-                x="0"
-                y="0"
-                width="100"
-                height="100"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M0 50 L50 0 L100 50 L50 100 Z"
-                  fill="none"
-                  stroke="#042944"
-                  strokeWidth="1"
+      {/* Meet Our Founder Section */}
+      <section
+        className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]"
+      >
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+            {/* Left - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative h-[500px] sm:h-[600px] rounded-lg overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/about_additional_1.jpg"
+                  alt="Our Creative Team"
+                  fill
+                  className="object-cover"
                 />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#pattern)" />
-          </svg>
-        </div>
+              </div>
+            </motion.div>
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="animate-in fade-in slide-in-from-left duration-700">
-              <div className="inline-block border border-[#042944] px-4 py-1 rounded-full mb-4">
-                <span className="text-[#042944] text-sm font-medium">
+            {/* Right - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-block border border-[#042944] px-4 py-1 rounded-full mb-6">
+                <span className="text-[#042944] text-sm font-medium tracking-wide">
                   OUR STORY
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#042944] mb-4 sm:mb-6">
-                Building Creative Excellence Since 2020
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#042944] mb-6 leading-tight">
+                Creative Excellence from the Heart of Samoa
               </h2>
-              <p className="text-[#101828] mb-4 leading-relaxed">
-                Samoa Creative Co was founded with a simple yet powerful vision:
-                to bring world-class creative services to Samoa and the Pacific
-                region. What started as a small design studio has grown into a
-                full-service creative agency serving clients locally and
-                globally.
-              </p>
-              <p className="text-[#101828] mb-4 leading-relaxed">
-                Our team combines international expertise with deep local
-                knowledge, allowing us to create designs that resonate both
-                culturally and commercially. We believe in the power of
-                storytelling through design, and every project we undertake is
-                an opportunity to tell a unique story.
-              </p>
-              <p className="text-[#101828] leading-relaxed">
-                Today, we're proud to have delivered over 100 projects, worked
-                with 50+ clients across various industries, and established
-                ourselves as a trusted partner for businesses looking to make an
-                impact through creative excellence.
-              </p>
-            </div>
 
-            <div className="relative h-[400px] sm:h-[500px] rounded-lg overflow-hidden animate-in fade-in slide-in-from-right duration-700">
-              <Image
-                src="/images/team_work.jpg"
-                alt="Our team at work"
-                fill
-                className="object-cover"
-              />
-            </div>
+              <div className="space-y-4 text-[#101828] leading-relaxed mb-8">
+                <p>
+                  Founded in Apia, Samoa Creative Co was born from a passion for
+                  design and a vision to bring world-class creative services to
+                  businesses across the Pacific and beyond.
+                </p>
+                <p>
+                  We believe that great design has the power to transform
+                  businesses, tell compelling stories, and create lasting
+                  connections with audiences. Our team combines local insight
+                  with global design trends to deliver work that stands out.
+                </p>
+                <p>
+                  From our humble beginnings as a small design studio, we've
+                  grown into a full-service creative agency, serving clients
+                  locally in Samoa and internationally. Every project we take on
+                  is treated with the same dedication and attention to detail.
+                </p>
+              </div>
+
+              <div className="bg-[#f8f9fa] p-6 rounded-lg border-l-4 border-[#042944]">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <svg
+                      className="w-6 h-6 text-[#042944]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#042944] mb-1">
+                      Our Commitment
+                    </h3>
+                    <p className="text-sm text-[#6a797e]">
+                      Delivering creative solutions that exceed expectations and
+                      drive real results for our clients.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 sm:py-16 bg-[#101828]">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-[#042944] text-white p-6 sm:p-8 rounded-lg text-center hover:scale-105 transition-transform duration-300 animate-in fade-in zoom-in delay-200">
-              <div className="text-4xl sm:text-5xl font-bold mb-2">100+</div>
-              <div className="text-[#d0d5dd]">Projects Completed</div>
-            </Card>
-            <Card className="bg-[#042944] text-white p-6 sm:p-8 rounded-lg text-center hover:scale-105 transition-transform duration-300 animate-in fade-in zoom-in delay-300">
-              <div className="text-4xl sm:text-5xl font-bold mb-2">50+</div>
-              <div className="text-[#d0d5dd]">Happy Clients</div>
-            </Card>
-            <Card className="bg-[#042944] text-white p-6 sm:p-8 rounded-lg text-center hover:scale-105 transition-transform duration-300 animate-in fade-in zoom-in delay-500">
-              <div className="text-4xl sm:text-5xl font-bold mb-2">5+</div>
-              <div className="text-[#d0d5dd]">Years Experience</div>
-            </Card>
-            <Card className="bg-[#042944] text-white p-6 sm:p-8 rounded-lg text-center hover:scale-105 transition-transform duration-300 animate-in fade-in zoom-in delay-700">
-              <div className="text-4xl sm:text-5xl font-bold mb-2">15+</div>
-              <div className="text-[#d0d5dd]">Team Members</div>
-            </Card>
-          </div>
+      {/* Our Mission Section */}
+      <section className="py-16 sm:py-20 bg-[#2c3e50] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+              backgroundSize: "30px 30px",
+            }}
+          />
         </div>
-      </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <Card className="p-6 sm:p-8 border-2 border-[#042944] rounded-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-left duration-700">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#042944] rounded-full flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+            {/* Left - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-block border border-white px-4 py-1 rounded-full mb-6">
+                <span className="text-white text-sm font-medium tracking-wide">
+                  OUR MISSION
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                Empowering Brands Through
+                <br />
+                <span className="text-[#3498db]">Creative Innovation</span>
+              </h2>
+
+              <p className="text-[#d0d5dd] leading-relaxed mb-6">
+                At Samoa Creative Co, our mission is to help businesses tell
+                their stories with impact and creativity. We combine strategic
+                thinking with exceptional design to create visual experiences
+                that resonate with audiences and drive business growth. Whether
+                you're a local startup or an established brand, we're here to
+                bring your vision to life.
+              </p>
+            </motion.div>
+
+            {/* Right - World Map */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative h-[300px] sm:h-[400px] flex items-center justify-center">
+                <svg viewBox="0 0 800 400" className="w-full h-full opacity-40">
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                    d="M100,200 Q200,100 300,200 T500,200 Q600,100 700,200"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-white"
+                  />
+                  <circle
+                    cx="150"
+                    cy="180"
+                    r="4"
+                    fill="currentColor"
+                    className="text-[#3498db]"
+                  />
+                  <circle
+                    cx="300"
+                    cy="200"
+                    r="4"
+                    fill="currentColor"
+                    className="text-[#3498db]"
+                  />
+                  <circle
+                    cx="450"
+                    cy="180"
+                    r="4"
+                    fill="currentColor"
+                    className="text-[#3498db]"
+                  />
+                  <circle
+                    cx="650"
+                    cy="160"
+                    r="4"
+                    fill="currentColor"
+                    className="text-[#3498db]"
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#042944] mb-4">
-                Our Mission
-              </h3>
-              <p className="text-[#101828] leading-relaxed">
-                To empower businesses in Samoa and beyond with creative
-                solutions that tell their unique stories, connect with their
-                audiences, and drive meaningful results. We're committed to
-                delivering excellence in every project while fostering
-                creativity and innovation in the Pacific region.
-              </p>
-            </Card>
-
-            <Card className="p-6 sm:p-8 border-2 border-[#042944] rounded-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-right duration-700">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#042944] rounded-full flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#042944] mb-4">
-                Our Vision
-              </h3>
-              <p className="text-[#101828] leading-relaxed">
-                To be the leading creative agency in the Pacific, recognized for
-                our innovative designs, strategic thinking, and commitment to
-                client success. We envision a future where Pacific creativity is
-                celebrated globally and local businesses have access to
-                world-class creative services.
-              </p>
-            </Card>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-12 sm:py-16 bg-white border-t border-[#eaecf0]">
+      {/* Our Values & Expertise Section */}
+      <section className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12 animate-in fade-in slide-in-from-top duration-700">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#042944] mb-4">
-              Our Core Values
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+            {/* Left - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <div className="relative h-[600px] sm:h-[650px] rounded-lg overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/about_additional.jpg"
+                  alt="Creative Process"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Right - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <div className="inline-block border border-[#042944] px-4 py-1 rounded-full mb-6">
+                <span className="text-[#042944] text-sm font-medium tracking-wide">
+                  WHAT WE STAND FOR
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#042944] mb-6 leading-tight">
+                Quality, Creativity & Results
+              </h2>
+
+              <div className="space-y-4 text-[#101828] leading-relaxed mb-8">
+                <p>
+                  We're more than just a design agency. We're your creative
+                  partners, committed to understanding your business goals and
+                  delivering solutions that make a real impact.
+                </p>
+                <p>
+                  Our team brings together diverse skills in graphic design,
+                  illustration, visual design, print production, and digital
+                  marketing. This comprehensive approach ensures that every
+                  aspect of your brand is cohesive and compelling.
+                </p>
+                <p>
+                  From concept to completion, we maintain the highest standards
+                  of quality and professionalism. Your success is our success,
+                  and we're dedicated to exceeding your expectations on every
+                  project.
+                </p>
+              </div>
+
+              <div className="space-y-3 mb-8">
+                {[
+                  "Client-Focused Approach",
+                  "Creative Excellence",
+                  "Timely Delivery",
+                  "Competitive Pricing",
+                  "Full-Service Solutions",
+                ].map((value, index) => (
+                  <motion.div
+                    key={value}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="w-2 h-2 bg-[#042944] rounded-full"></div>
+                    <span className="text-[#101828] font-medium">{value}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <Link href="/services">
+                  <Button className="bg-[#3498db] hover:bg-[#2980b9] text-white px-8 py-6 text-lg rounded-md transition-all hover:scale-105 shadow-lg">
+                    EXPLORE OUR SERVICES
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Start Your Project CTA */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#2c3e50] to-[#34495e] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="/images/banner.png"
+            alt="Background"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="inline-block border border-white px-4 py-1 rounded-full mb-6">
+              <span className="text-white text-sm font-medium tracking-wide">
+                LET'S CREATE TOGETHER
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-balance">
+              Ready to Bring Your Vision to Life?
             </h2>
-            <p className="text-[#101828] max-w-2xl mx-auto">
-              These principles guide everything we do and shape how we work with
-              our clients
+
+            <p className="text-[#d0d5dd] text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+              Whether you need a complete brand identity, stunning
+              illustrations, professional print materials, or a comprehensive
+              marketing strategy, we're here to help. Let's discuss your project
+              and create something amazing together.
             </p>
-          </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center animate-in fade-in zoom-in delay-200">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#042944] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl sm:text-3xl font-bold text-white">
-                  C
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#042944] mb-3">
-                Creativity
-              </h3>
-              <p className="text-[#101828]">
-                We push boundaries and think outside the box to deliver unique,
-                innovative solutions
-              </p>
-            </div>
-
-            <div className="text-center animate-in fade-in zoom-in delay-300">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#042944] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl sm:text-3xl font-bold text-white">
-                  E
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#042944] mb-3">
-                Excellence
-              </h3>
-              <p className="text-[#101828]">
-                We're committed to delivering the highest quality work in
-                everything we create
-              </p>
-            </div>
-
-            <div className="text-center animate-in fade-in zoom-in delay-500">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#042944] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl sm:text-3xl font-bold text-white">
-                  I
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#042944] mb-3">
-                Integrity
-              </h3>
-              <p className="text-[#101828]">
-                We build trust through honesty, transparency, and ethical
-                business practices
-              </p>
-            </div>
-
-            <div className="text-center animate-in fade-in zoom-in delay-700">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#042944] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl sm:text-3xl font-bold text-white">
-                  C
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#042944] mb-3">
-                Collaboration
-              </h3>
-              <p className="text-[#101828]">
-                We work closely with our clients as partners to achieve shared
-                success
-              </p>
-            </div>
-
-            <div className="text-center animate-in fade-in zoom-in delay-900">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#042944] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl sm:text-3xl font-bold text-white">
-                  I
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#042944] mb-3">
-                Innovation
-              </h3>
-              <p className="text-[#101828]">
-                We stay ahead of trends and embrace new technologies to deliver
-                cutting-edge solutions
-              </p>
-            </div>
-
-            <div className="text-center animate-in fade-in zoom-in delay-1000">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#042944] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl sm:text-3xl font-bold text-white">
-                  P
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#042944] mb-3">
-                Passion
-              </h3>
-              <p className="text-[#101828]">
-                We love what we do and bring enthusiasm and energy to every
-                project
-              </p>
-            </div>
-          </div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/contact">
+                <Button className="bg-white text-[#042944] hover:bg-[#f8f9fa] px-8 py-6 text-lg rounded-md transition-all shadow-xl">
+                  START YOUR PROJECT
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-[#042944]">
-        <div className="container mx-auto px-4 sm:px-6 text-center animate-in fade-in zoom-in duration-700">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 text-balance">
-            Ready to Work Together?
-          </h2>
-          <p className="text-[#d0d5dd] text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Let's bring your creative vision to life. Get in touch with us today
-            to start your next project.
-          </p>
-          <Link href="/contact">
-            <Button className="bg-white text-[#042944] hover:bg-[#eaecf0] px-8 py-6 text-lg rounded-md transition-all hover:scale-105">
-              GET IN TOUCH
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-[#101828] text-white py-8 sm:py-12">
+      {/* Final CTA Section */}
+      <section className="py-12 sm:py-16 bg-[#2c3e50] text-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row items-center justify-between gap-6"
+          >
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 relative">
-                 <Image
-                      src="/images/logo.png" // path to your logo image in public folder
-                      alt="Logo"
-                      fill
-                      className="object-contain white"
-                    />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-bold text-base sm:text-lg leading-none">
-                    SAMOA
-                  </span>
-                  <span className="font-bold text-base sm:text-lg leading-none">
-                    CREATIVE
-                  </span>
-                </div>
-              </div>
-              <p className="text-[#d0d5dd] text-sm">
-                Tempus congue tellus semper sapien urna. Tellus posuere ut.
+              <h3 className="text-2xl sm:text-3xl font-bold mb-2">
+                Have a Project in Mind?{" "}
+                <span className="text-[#3498db]">Let's Make It Happen</span>
+              </h3>
+              <p className="text-[#d0d5dd]">
+                Get in touch today and let's discuss how we can help your
+                business grow
               </p>
             </div>
-
-            <div>
-              <h3 className="font-bold mb-4">SERVICES</h3>
-              <ul className="space-y-2 text-[#d0d5dd] text-sm">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Graphics Design
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Visual Design
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Illustration
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Online Marketing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Print
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">COMPANY</h3>
-              <ul className="space-y-2 text-[#d0d5dd] text-sm">
-                <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-white transition-colors"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="hover:text-white transition-colors"
-                  >
-                    Contact Info
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="hover:text-white transition-colors"
-                  >
-                    Our Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">SUBSCRIBE</h3>
-              <input
-                type="email"
-                placeholder="Email address"
-                className="w-full px-4 py-3 rounded-md bg-white text-[#101828] mb-3 text-sm"
-              />
-              <Button className="w-full bg-[#5925dc] hover:bg-[#3e1c96] text-white py-3 rounded-md transition-all hover:scale-105">
-                SUBSCRIBE
+            <Link href="/contact">
+              <Button className="bg-white text-[#042944] hover:bg-[#f8f9fa] px-8 py-4 rounded-md transition-all hover:scale-105 whitespace-nowrap">
+                GET IN TOUCH →
               </Button>
-            </div>
-          </div>
-
-          <div className="border-t border-[#394149] pt-6 text-center text-[#d0d5dd] text-xs sm:text-sm">
-            COPYRIGHT ©2025 SAMOA CREATIVE CO. ALL RIGHTS RESERVED.
-          </div>
+            </Link>
+          </motion.div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }

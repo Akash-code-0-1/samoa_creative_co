@@ -1,71 +1,68 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import Image from "next/image";
-import { useState } from "react";
-import Link from "next/link";
-import { ScrollReveal } from "@/components/scroll-reveal";
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import Image from "next/image"
+import { useState, useRef, useEffect } from "react"
+import Link from "next/link"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 export default function SamoaCreativePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const clientMarqueeRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const animateMarquee = (element: HTMLElement | null) => {
+      if (!element) return
+
+      let scrollAmount = 0
+      const scroll = () => {
+        scrollAmount += 0.5
+        if (scrollAmount >= element.scrollWidth / 2) {
+          scrollAmount = 0
+        }
+        element.style.transform = `translateX(-${scrollAmount}px)`
+        requestAnimationFrame(scroll)
+      }
+      scroll()
+    }
+
+    animateMarquee(clientMarqueeRef.current)
+  }, [])
 
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm  animate-in fade-in slide-in-from-top duration-500">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm animate-in fade-in slide-in-from-top duration-500">
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-          >
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div className="w-10 h-10 sm:w-12 sm:h-12 relative">
-              <img
-                src="/images/logo.png"
-                alt="Logo"
-                className="w-full h-full object-contain"
-              />
+              <img src="/images/logo.png" alt="Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col">
-              <span className="text-[#042944] font-bold text-lg sm:text-xl leading-none">
-                SAMOA
-              </span>
-              <span className="text-[#042944] font-bold text-lg sm:text-xl leading-none">
-                CREATIVE
-              </span>
+              <span className="text-[#042944] font-bold text-lg sm:text-xl leading-none">SAMOA</span>
+              <span className="text-[#042944] font-bold text-lg sm:text-xl leading-none">CREATIVE</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <Link
-              href="/"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
+            <Link href="/" className="text-[#101828] hover:text-[#042944] font-medium transition-colors">
               Home
             </Link>
-            <Link
-              href="/about"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
+            <Link href="/about" className="text-[#101828] hover:text-[#042944] font-medium transition-colors">
               About Us
             </Link>
-            <Link
-              href="/services"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
+            <Link href="/services" className="text-[#101828] hover:text-[#042944] font-medium transition-colors">
               Services
             </Link>
-            <Link
-              href="/contact"
-              className="text-[#101828] hover:text-[#042944] font-medium transition-colors"
-            >
+            <Link href="/contact" className="text-[#101828] hover:text-[#042944] font-medium transition-colors">
               Contact Us
             </Link>
           </nav>
 
-          <div className="flex items-center  gap-4">
+          <div className="flex items-center gap-4">
             <Button className="hidden sm:block bg-[#042944] items-center text-center hover:bg-[#101828] text-white px-4 sm:px-6 py-3 rounded-md text-xs sm:text-sm transition-all hover:scale-105">
               LET'S WORK
             </Button>
@@ -76,28 +73,13 @@ export default function SamoaCreativePage() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   // Cross icon
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
                   // Hamburger icon
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
@@ -108,28 +90,16 @@ export default function SamoaCreativePage() {
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-[#eaecf0] bg-white animate-in slide-in-from-top duration-300">
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <Link
-                href="/"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
+              <Link href="/" className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors">
                 Home
               </Link>
-              <Link
-                href="/about"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
+              <Link href="/about" className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors">
                 About Us
               </Link>
-              <Link
-                href="/services"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
+              <Link href="/services" className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors">
                 Services
               </Link>
-              <Link
-                href="/contact"
-                className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors"
-              >
+              <Link href="/contact" className="text-[#101828] hover:text-[#042944] font-medium py-2 transition-colors">
                 Contact Us
               </Link>
             </nav>
@@ -142,13 +112,7 @@ export default function SamoaCreativePage() {
         <div className="relative h-[500px] sm:h-[600px] lg:h-[700px]">
           {/* Hero Image */}
           <div className="absolute inset-0">
-            <Image
-              src="/images/banner.png"
-              alt="Team collaboration"
-              fill
-              className="object-cover"
-              priority
-            />
+            <Image src="/images/banner.png" alt="Team collaboration" fill className="object-cover" priority />
             {/* Subtle overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
           </div>
@@ -171,12 +135,7 @@ export default function SamoaCreativePage() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Button>
               </div>
@@ -197,9 +156,7 @@ export default function SamoaCreativePage() {
               <div className="animate-slide-left">
                 {/* WHO WE ARE Badge */}
                 <div className="inline-block border-2 border-[#042944] px-4 py-1.5 rounded-full mb-6 animate-pulse-glow">
-                  <span className="text-[#042944] text-xs sm:text-sm font-semibold tracking-wide">
-                    WHO WE ARE
-                  </span>
+                  <span className="text-[#042944] text-xs sm:text-sm font-semibold tracking-wide">WHO WE ARE</span>
                 </div>
 
                 {/* Main Heading */}
@@ -209,10 +166,9 @@ export default function SamoaCreativePage() {
 
                 {/* Description */}
                 <p className="text-[#101828] text-base sm:text-lg mb-8 leading-relaxed">
-                  Samoa Creative Co is a full-service creative agency based in
-                  Apia, Samoa. We specialize in design, print, illustration, and
-                  online marketing. Our mission is to help businesses tell their
-                  story with impact and creativity.
+                  Samoa Creative Co is a full-service creative agency based in Apia, Samoa. We specialize in design,
+                  print, illustration, and online marketing. Our mission is to help businesses tell their story with
+                  impact and creativity.
                 </p>
 
                 {/* Stats Cards */}
@@ -222,12 +178,8 @@ export default function SamoaCreativePage() {
                     style={{ animationDelay: "100ms" }}
                   >
                     <div className="w-8 h-8 bg-white rounded-full mb-4 animate-pulse"></div>
-                    <div className="text-4xl sm:text-5xl font-bold mb-2">
-                      100+
-                    </div>
-                    <div className="text-sm text-white/90">
-                      Designs Delivered
-                    </div>
+                    <div className="text-4xl sm:text-5xl font-bold mb-2">100+</div>
+                    <div className="text-sm text-white/90">Designs Delivered</div>
                   </Card>
 
                   <Card
@@ -235,12 +187,8 @@ export default function SamoaCreativePage() {
                     style={{ animationDelay: "200ms" }}
                   >
                     <div className="w-8 h-8 bg-white rounded-full mb-4 animate-pulse"></div>
-                    <div className="text-4xl sm:text-5xl font-bold mb-2">
-                      50+
-                    </div>
-                    <div className="text-sm text-white/90">
-                      Serving Local & Global Clients
-                    </div>
+                    <div className="text-4xl sm:text-5xl font-bold mb-2">50+</div>
+                    <div className="text-sm text-white/90">Serving Local & Global Clients</div>
                   </Card>
 
                   <Card
@@ -248,12 +196,8 @@ export default function SamoaCreativePage() {
                     style={{ animationDelay: "300ms" }}
                   >
                     <div className="w-8 h-8 bg-white rounded-full mb-4 animate-pulse"></div>
-                    <div className="text-4xl sm:text-5xl font-bold mb-2">
-                      5+
-                    </div>
-                    <div className="text-sm text-white/90">
-                      Years of Experience
-                    </div>
+                    <div className="text-4xl sm:text-5xl font-bold mb-2">5+</div>
+                    <div className="text-sm text-white/90">Years of Experience</div>
                   </Card>
                 </div>
               </div>
@@ -263,7 +207,7 @@ export default function SamoaCreativePage() {
             <ScrollReveal delay={200}>
               <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden animate-slide-right hover-lift group shadow-2xl">
                 <Image
-                  src="/images/aboutsub_image.jpg"
+                  src="/images/home_sub.jpg"
                   alt="Professional at work"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -336,13 +280,10 @@ export default function SamoaCreativePage() {
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <ScrollReveal>
             <div className="text-center mb-8 sm:mb-12 animate-slide-up">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                Our Services
-              </h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Our Services</h2>
               <p className="text-[#d0d5dd] max-w-2xl mx-auto px-4">
-                Et et id laoreet ultricies elementum venenatis ornare.
-                Sollicitudin mauris id aliquet magna adipiscing. In lorem lacus
-                quis egestas tincidunt neque id accumsan.
+                Et et id laoreet ultricies elementum venenatis ornare. Sollicitudin mauris id aliquet magna adipiscing.
+                In lorem lacus quis egestas tincidunt neque id accumsan.
               </p>
             </div>
           </ScrollReveal>
@@ -444,13 +385,7 @@ export default function SamoaCreativePage() {
       {/* Why Work With Us Section */}
       <section className="py-12 sm:py-16 bg-white relative overflow-hidden">
         <div className="absolute bg-cover bg-center inset-0">
-          <Image
-            src="/images/about_bg.png"
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-50"
-          />
+          <Image src="/images/about_bg.png" alt="Background" layout="fill" objectFit="cover" className="opacity-50" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -477,25 +412,18 @@ export default function SamoaCreativePage() {
                   Samoa Creative Co?
                 </h2>
                 <div className="space-y-4">
-                  {[
-                    "Local & Global Expertise",
-                    "Full-Service Agency",
-                    "Creative + Strategic",
-                    "Client-Focused",
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-center lg:justify-start items-center gap-3 animate-slide-right hover:translate-x-2 transition-transform duration-300"
-                      style={{ animationDelay: `${(index + 1) * 100}ms` }}
-                    >
-                      <span className="text-[#042944] text-xl font-bold">
-                        ›
-                      </span>
-                      <span className="text-[#101828] text-base sm:text-lg font-semibold">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
+                  {["Local & Global Expertise", "Full-Service Agency", "Creative + Strategic", "Client-Focused"].map(
+                    (item, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-center lg:justify-start items-center gap-3 animate-slide-right hover:translate-x-2 transition-transform duration-300"
+                        style={{ animationDelay: `${(index + 1) * 100}ms` }}
+                      >
+                        <span className="text-[#042944] text-xl font-bold">›</span>
+                        <span className="text-[#101828] text-base sm:text-lg font-semibold">{item}</span>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
             </ScrollReveal>
@@ -508,141 +436,25 @@ export default function SamoaCreativePage() {
         <div className="container mx-auto px-4 sm:px-6">
           <ScrollReveal>
             <div className="text-center mb-8 animate-slide-up">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#042944] mb-2">
-                Our Clients
-              </h2>
-              <p className="text-[#6a797e]">
-                We have been working with some Fortune 500+ clients
-              </p>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#042944] mb-2">Our Clients</h2>
+              <p className="text-[#6a797e]">We have been working with some Fortune 500+ clients</p>
             </div>
           </ScrollReveal>
 
-          <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-12">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <ScrollReveal key={i} delay={i * 50}>
-                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 m-6 relative grayscale hover:grayscale-0 transition-all hover:scale-110 animate-scale-in">
-                  <Image
-                    src={`/images/company-${i}.png`}
-                    alt={`Client ${i}`}
-                    fill
-                    className="object-contain"
-                  />
+          <div className="overflow-hidden">
+            <div ref={clientMarqueeRef} className="flex gap-12 whitespace-nowrap items-center py-4">
+              {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((i, index) => (
+                <div
+                  key={index}
+                  className="relative w-24 h-24 lg:w-32 lg:h-32 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                  <Image src={`/images/company-${i}.png`} alt={`Client ${i}`} fill className="object-contain" />
                 </div>
-              </ScrollReveal>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-[#101828] text-white py-8 sm:py-12">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 relative">
-                  <div className="w-full h-full relative">
-                    <Image
-                      src="/images/logo.png" // path to your logo image in public folder
-                      alt="Logo"
-                      fill
-                      className="object-contain white"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-bold text-base sm:text-lg leading-none">
-                    SAMOA
-                  </span>
-                  <span className="font-bold text-base sm:text-lg leading-none">
-                    CREATIVE
-                  </span>
-                </div>
-              </div>
-              <p className="text-[#d0d5dd] text-sm">
-                Tempus congue tellus semper sapien urna. Tellus posuere ut.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">SERVICES</h3>
-              <ul className="space-y-2 text-[#d0d5dd] text-sm">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Graphics Design
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Visual Design
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Illustration
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Online Marketing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Print
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">COMPANY</h3>
-              <ul className="space-y-2 text-[#d0d5dd] text-sm">
-                <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-white transition-colors"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="hover:text-white transition-colors"
-                  >
-                    Contact Info
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="hover:text-white transition-colors"
-                  >
-                    Our Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">SUBSCRIBE</h3>
-              <input
-                type="email"
-                placeholder="Email address"
-                className="w-full px-4 py-3 rounded-md bg-white text-[#101828] mb-3 text-sm"
-              />
-              <Button className="w-full bg-[#5925dc] hover:bg-[#3e1c96] text-white py-3 rounded-md transition-all hover:scale-105">
-                SUBSCRIBE
-              </Button>
-            </div>
-          </div>
-
-          <div className="border-t border-[#394149] pt-6 text-center text-[#d0d5dd] text-xs sm:text-sm">
-            COPYRIGHT ©2025 SAMOA CREATIVE CO. ALL RIGHTS RESERVED.
-          </div>
-        </div>
-      </footer>
     </div>
-  );
+  )
 }
