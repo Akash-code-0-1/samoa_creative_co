@@ -117,6 +117,8 @@ export default function SamoaCreativePage() {
             <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
           </div>
 
+          
+
           {/* Hero Content */}
           <div className="container mx-auto px-4 sm:px-6 h-full relative z-10">
             <div className="flex items-center h-full max-w-xl">

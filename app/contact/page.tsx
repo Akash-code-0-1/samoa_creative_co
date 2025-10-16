@@ -252,6 +252,9 @@ export default function ContactPage() {
               </Card>
             </motion.div>
 
+
+            
+
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
