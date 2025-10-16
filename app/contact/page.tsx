@@ -16,52 +16,53 @@ export default function ContactPage() {
 
   const [successName, setSuccessName] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("submitting");
+async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  setStatus("submitting");
 
-    const form = e.currentTarget;
-    const name = form.name.value;
-    const subject = form.subject.value;
-    const email = form.email.value;
-    const phone = form.phone.value;
-    const message = form.message.value;
+  // Cast currentTarget to HTMLFormElement
+  const form = e.currentTarget as HTMLFormElement;
 
-    // Data sent to Formspree
-    const data = {
-      name,
-      subject,
-      email,
-      phone,
-      message,
-      _replyto: email,
-      _subject: `New message from ${name} — ${subject}`, // ✅ Professional subject line
-    };
+  // Access inputs safely
+  const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+  const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
+  const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+  const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
+  const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
 
-    try {
-      const res = await fetch("https://formspree.io/f/mqaylyyw", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+  const data = {
+    name,
+    subject,
+    email,
+    phone,
+    message,
+    _replyto: email,
+    _subject: `New message from ${name} — ${subject}`,
+  };
 
-      if (res.ok) {
-        setStatus("success");
-        (form as HTMLFormElement).reset();
+  try {
+    const res = await fetch("https://formspree.io/f/mqaylyyw", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-        // ✅ Store name temporarily to display a personalized message
-        setSuccessName(name);
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      console.error(err);
+    if (res.ok) {
+      setStatus("success");
+      form.reset();
+      setSuccessName(name);
+    } else {
       setStatus("error");
     }
+  } catch (err) {
+    console.error(err);
+    setStatus("error");
   }
+}
+
 
   return (
     <div className="min-h-screen">
@@ -253,7 +254,7 @@ export default function ContactPage() {
             </motion.div>
 
 
-            
+
 
             {/* Contact Form */}
             <motion.div
