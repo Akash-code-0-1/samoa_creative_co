@@ -7,8 +7,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { ScrollReveal } from "@/components/scroll-reveal"
-
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function ServicesPage() {
   const topMarqueeRef = useRef<HTMLDivElement>(null);
@@ -387,37 +386,89 @@ export default function ServicesPage() {
                 }}
                 className="grid lg:grid-cols-2 bg-white rounded-2xl shadow-xl overflow-hidden"
               >
+                {/* LEFT SIDE - TEXT */}
                 <div className="bg-[#042944] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-                  <div className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
-                    {slides[currentSlide].service}
-                  </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-                    {slides[currentSlide].title}
-                  </h2>
-                  <p className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg">
-                    {slides[currentSlide].description}
-                  </p>
-                  <div className="space-y-3 mb-8">
-                    {slides[currentSlide].features.map((feature, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 text-white"
-                      >
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                        <span className="text-sm sm:text-base">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <div className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
+                      {slides[currentSlide].service}
+                    </div>
+
+                    <motion.h2
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6"
+                    >
+                      {slides[currentSlide].title}
+                    </motion.h2>
+
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.6, delay: 0.15 }}
+                      className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg"
+                    >
+                      {slides[currentSlide].description}
+                    </motion.p>
+
+                    <motion.div
+                      className="space-y-3 mb-8"
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      variants={{
+                        hidden: {},
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.07,
+                            delayChildren: 0.25,
+                          },
+                        },
+                      }}
+                    >
+                      {slides[currentSlide].features.map((feature, idx) => (
+                        <motion.div
+                          key={idx}
+                          variants={{
+                            hidden: { opacity: 0, x: -10 },
+                            visible: { opacity: 1, x: 0 },
+                          }}
+                          transition={{ duration: 0.4 }}
+                          className="flex items-center gap-3 text-white"
+                        >
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                          <span className="text-sm sm:text-base">
+                            {feature}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </motion.div>
                 </div>
 
-                <div className="relative h-[400px] sm:h-[500px] lg:h-auto min-h-[600px]">
+                {/* RIGHT SIDE - IMAGE */}
+                <motion.div
+                  key={slides[currentSlide].image}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="relative h-[400px] sm:h-[500px] lg:h-auto min-h-[600px]"
+                >
                   <Image
                     src={slides[currentSlide].image || "/placeholder.svg"}
                     alt={slides[currentSlide].title}
                     fill
                     className="object-cover"
                   />
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatePresence>
 
@@ -605,19 +656,31 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 sm:px-6">
           <ScrollReveal>
             <div className="text-center mb-8 animate-slide-up">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#042944] mb-2">Our Clients</h2>
-              <p className="text-[#6a797e]">We have been working with some Fortune 500+ clients</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#042944] mb-2">
+                Our Clients
+              </h2>
+              <p className="text-[#6a797e]">
+                We have been working with some Fortune 500+ clients
+              </p>
             </div>
           </ScrollReveal>
 
           <div className="overflow-hidden">
-            <div ref={clientMarqueeRef} className="flex gap-12 whitespace-nowrap items-center py-4">
+            <div
+              ref={clientMarqueeRef}
+              className="flex gap-12 whitespace-nowrap items-center py-4"
+            >
               {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((i, index) => (
                 <div
                   key={index}
                   className="relative w-24 h-24 lg:w-32 lg:h-32 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
                 >
-                  <Image src={`/images/company-${i}.png`} alt={`Client ${i}`} fill className="object-contain" />
+                  <Image
+                    src={`/images/company-${i}.png`}
+                    alt={`Client ${i}`}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               ))}
             </div>

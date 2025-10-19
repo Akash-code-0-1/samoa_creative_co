@@ -82,18 +82,19 @@ export default function AboutPage() {
 
       {/* Meet Our Founder Section */}
       <section
-        className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]"
+        className="relative py-16 min-h-[80vh] sm:py-20 bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]"
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
             {/* Left - Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
+<motion.div
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true, amount: 0.2 }}
+  className="relative"
+>
+
               <div className="relative h-[500px] sm:h-[600px] rounded-lg overflow-hidden shadow-2xl">
                 <Image
                   src="/images/about_additional_1.jpg"
