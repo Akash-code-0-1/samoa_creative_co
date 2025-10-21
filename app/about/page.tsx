@@ -9,9 +9,12 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 bg-[#042944] overflow-hidden">
+      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]">
+        {/* Overlay (optional for dark tint) */}
+        <div className="absolute inset-0 bg-[#042944]/70"></div>
+
         {/* Pattern Layer 1 */}
-        <div className="absolute inset-0 opacity-10 animate-slowMove">
+        {/* <div className="absolute inset-0 opacity-10 animate-slowMove">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
@@ -39,10 +42,10 @@ export default function AboutPage() {
             </defs>
             <rect width="100%" height="100%" fill="url(#aboutPattern1)" />
           </svg>
-        </div>
+        </div> */}
 
         {/* Pattern Layer 2 */}
-        <div className="absolute inset-0 opacity-5 animate-slowMoveReverse">
+        {/* <div className="absolute inset-0 opacity-5 animate-slowMoveReverse">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
@@ -64,7 +67,7 @@ export default function AboutPage() {
             </defs>
             <rect width="100%" height="100%" fill="url(#aboutPattern2)" />
           </svg>
-        </div>
+        </div> */}
 
         {/* Content */}
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -72,7 +75,7 @@ export default function AboutPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 text-balance">
               About Us
             </h1>
-            <p className="text-[#d0d5dd] text-lg sm:text-xl max-w-2xl mx-auto">
+            <p className="text-[#d0d5dd] text-[12px] sm:text-xl max-w-3xl mx-auto">
               Learn more about our story, mission, and the team behind Samoa
               Creative Co.
             </p>
@@ -81,20 +84,17 @@ export default function AboutPage() {
       </section>
 
       {/* Meet Our Founder Section */}
-      <section
-        className="relative py-16 min-h-[80vh] sm:py-20 bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]"
-      >
+      <section className="relative py-16 min-h-[80vh] sm:py-20 bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
             {/* Left - Image */}
-<motion.div
-  initial={{ opacity: 0, x: -50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true, amount: 0.2 }}
-  className="relative"
->
-
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="relative"
+            >
               <div className="relative h-[500px] sm:h-[600px] rounded-lg overflow-hidden shadow-2xl">
                 <Image
                   src="/images/about_additional_1.jpg"

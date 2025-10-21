@@ -287,9 +287,12 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 bg-[#042944]">
+      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]">
+        {/* Overlay (optional for dark tint) */}
+        <div className="absolute inset-0 bg-[#042944]/70"></div>
+
         {/* SVG Tribal Pattern Background */}
-        <div className="absolute inset-0 opacity-10">
+        {/* <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
@@ -300,14 +303,13 @@ export default function ServicesPage() {
                 height="120"
                 patternUnits="userSpaceOnUse"
               >
-                {/* Subtle grid lines */}
+
                 <path
                   d="M0 60 L120 60 M60 0 L60 120"
                   stroke="white"
                   strokeWidth="0.5"
                   opacity="0.5"
                 />
-                {/* Tribal triangles (chevron style) */}
                 <path
                   d="M0 30 L30 0 L60 30 L30 60 Z 
                M60 30 L90 0 L120 30 L90 60 Z"
@@ -315,7 +317,6 @@ export default function ServicesPage() {
                   stroke="white"
                   strokeWidth="1"
                 />
-                {/* Ocean wave band */}
                 <path
                   d="M0 90 Q30 60, 60 90 T120 90"
                   fill="none"
@@ -325,10 +326,9 @@ export default function ServicesPage() {
               </pattern>
             </defs>
 
-            {/* Apply the pattern */}
             <rect width="100%" height="100%" fill="url(#heroPattern)" />
           </svg>
-        </div>
+        </div> */}
 
         {/* Foreground content */}
         <div className="container mx-auto px-4 sm:px-6 relative z-10">

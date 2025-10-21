@@ -11,7 +11,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 relative">
-                <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
+                <Image src="/images/logo_2.png" alt="Logo" fill className="object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-base sm:text-lg leading-none">SAMOA</span>

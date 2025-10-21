@@ -67,9 +67,12 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Background Image */}
-      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 bg-gradient-to-br from-[#042944] via-[#042944] to-[#101828] overflow-hidden">
+      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/images/about_bg.png')]">
+        {/* Overlay (optional for dark tint) */}
+        <div className="absolute inset-0 bg-[#042944]/70"></div>
+        
         {/* Pattern Layer 1 */}
-        <div className="absolute inset-0 opacity-10 animate-slowMoveReverse">
+        {/* <div className="absolute inset-0 opacity-10 animate-slowMoveReverse">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
@@ -95,10 +98,10 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
             </defs>
             <rect width="100%" height="100%" fill="url(#contactPattern1)" />
           </svg>
-        </div>
+        </div> */}
 
         {/* Pattern Layer 2 */}
-        <div className="absolute inset-0 opacity-5 animate-slowMove">
+        {/* <div className="absolute inset-0 opacity-5 animate-slowMove">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
@@ -125,7 +128,7 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
             </defs>
             <rect width="100%" height="100%" fill="url(#contactPattern2)" />
           </svg>
-        </div>
+        </div> */}
 
         {/* Content */}
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
