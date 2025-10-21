@@ -1,8 +1,14 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 export function Footer() {
+  
+  const router = useRouter();
+
   return (
     <footer className="bg-[#101828] text-white py-8 sm:py-12">
       <div className="container mx-auto px-4 sm:px-6">
@@ -90,7 +96,9 @@ export function Footer() {
               placeholder="Email address"
               className="w-full px-4 py-3 rounded-md bg-white text-[#101828] mb-3 text-sm"
             />
-            <Button className="w-full bg-[#5925dc] hover:bg-[#3e1c96] text-white py-3 rounded-md transition-all hover:scale-105">
+            <Button 
+            onClick={() => router.push("/contact")}
+            className="w-full bg-[#5925dc] hover:bg-[#3e1c96] text-white py-3 rounded-md transition-all hover:scale-105">
               SUBSCRIBE
             </Button>
           </div>

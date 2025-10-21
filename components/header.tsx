@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm animate-in fade-in slide-in-from-top duration-500">
@@ -78,7 +79,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className="hidden sm:flex items-center justify-center bg-[#042944] hover:bg-[#101828] text-white rounded-md text-xs sm:text-sm h-10 sm:h-12 px-4 sm:px-6 leading-none transition-all hover:scale-105">
+          <button 
+          onClick={() => router.push("/contact")}
+           className="hidden sm:flex items-center justify-center bg-[#042944] hover:bg-[#101828] text-white rounded-md text-xs sm:text-sm h-10 sm:h-12 px-4 sm:px-6 leading-none transition-all hover:scale-105">
             LET'S WORK
           </button>
 
